@@ -72,12 +72,46 @@ export class PartesComponent implements OnInit {
     this.source = new LocalDataSource(this.data);
     this.activeRoute.params.subscribe(params => {
       console.log(params);
-      
       this.detalle = params.partes;
+      if(this.detalle === 'mano de obra'){
+        console.log('into yes');
+        
+        this.settings.columns = {
+          nombre: {
+            title: 'Nombre',
+            type: 'string',
+          },
+          horas: {
+            title: 'Horas',
+            type: 'number',
+          },
+          valorHora:{
+            title: 'Cantidad',
+            type: 'number',
+          }
+      }
+    }
+      else{
+        this.settings.columns = {
+          nombre: {
+            title: 'Nombre',
+            type: 'string',
+          },
+          valor : {
+            title: 'Precio unitario',
+            type: 'number',
+          },
+          cantidad : {
+            title: 'Cantidad',
+            type: 'number',
+          }
+      }
+      }
     })
   }
 
   ngOnInit() {
+    
   }
 
   crear(){

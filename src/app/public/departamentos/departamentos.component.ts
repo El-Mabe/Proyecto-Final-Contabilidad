@@ -11,6 +11,8 @@ import { NbDialogService } from '@nebular/theme';
 export class DepartamentosComponent implements OnInit {
 
   @ViewChild('dialog', {static: true}) dialog: ElementRef;
+  @ViewChild('unfinishedUnitsDialog', {static: true}) unfinishedUnitsDialog: ElementRef;
+  @ViewChild('finishedUnitsDialog', {static: true}) finishedUnitsDialog: ElementRef;
 
   settings = {
     actions: {
@@ -65,8 +67,17 @@ export class DepartamentosComponent implements OnInit {
     console.log(event.data.nombre);
     this.router.navigateByUrl(`dashboard/${event.data.nombre.toLowerCase()}`);
   }
+
   crear(){
     this.openDialog(this.dialog);
+  }
+
+  consultarUnidadesEnProceso(){
+    this.openDialog(this.unfinishedUnitsDialog);
+  }
+
+  consultarUnidadesTerminadas(){
+    this.openDialog(this.finishedUnitsDialog);
   }
 
   openDialog(dialog) {

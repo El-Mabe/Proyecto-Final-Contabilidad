@@ -4,6 +4,12 @@
         <button nbButton status="success" size="xsmall" class="pull-right" (click)="crear()"><i
             class="fa fa-plus"></i> Agregar
           </button>
+          <button nbButton status="success" size="xsmall" class="pull-right" (click)="consultarUnidadesEnProceso()"><i
+            class="fa fa-plus"></i> Consultar unidades en proceso
+          </button>
+          <button nbButton status="success" size="xsmall" class="pull-right" (click)="consultarUnidadesTerminadas()"><i
+            class="fa fa-plus"></i> Consultar unidades terminadas
+          </button>
     </nb-card-header>
     <nb-card-body>
         <ng2-smart-table [settings]="settings" [source]="source" (edit)="navigate($event)">
@@ -11,6 +17,7 @@
     </nb-card-body>
     <router-outlet></router-outlet>
 </nb-card>
+
 <ng-template #dialog let-data let-ref="dialogRef">
     <nb-card>
         <nb-card-header>Registrar Departamento</nb-card-header>
@@ -34,6 +41,45 @@
                 </div>
                 <div class="col-6">
                     <button nbButton size="small" (click)="registrar()" class="btn btn-outline-success">Registrar</button>
+                </div>
+            </div>
+        </nb-card-footer>
+    </nb-card>
+</ng-template>
+
+<ng-template #unfinishedUnitsDialog let-data let-ref="unfinishedUnitsDialogRef">
+    <nb-card>
+        <nb-card-header>Unidades en proceso</nb-card-header>
+        <nb-card-body>
+            <form>
+                <div class="col-sm-12">
+                            <p>Actualmente hay en el departamento X unidades en proceso.</p>   
+                </div>
+            </form>
+        </nb-card-body>
+        <nb-card-footer>
+            <div class="row d-inline-flex">
+                <div class="col-6">
+                    <button id="btn-close" nbButton (click)="ref.close()" size="small" class="btn btn-outline-danger">Aceptar</button>
+                </div>
+            </div>
+        </nb-card-footer>
+    </nb-card>
+</ng-template>
+<ng-template #finishedUnitsDialog let-data let-ref="finishedUnitsDialogRef">
+    <nb-card>
+        <nb-card-header>Unidades Terminadas</nb-card-header>
+        <nb-card-body>
+            <form>
+                <div class="col-sm-12">
+                            <p>Actualmente hay en el departamento X unidades terminadas.</p>   
+                </div>
+            </form>
+        </nb-card-body>
+        <nb-card-footer>
+            <div class="row d-inline-flex">
+                <div class="col-6">
+                    <button id="btn-close" nbButton (click)="ref.close()" size="small" class="btn btn-outline-danger">Aceptar</button>
                 </div>
             </div>
         </nb-card-footer>

@@ -11,6 +11,8 @@ import { NbDialogService } from '@nebular/theme';
 export class DetalleDepartamentosComponent implements OnInit {
 
   @ViewChild('dialog', {static: true}) dialog: ElementRef;
+  @ViewChild('timeDialog', {static: true}) timeDialog: ElementRef;
+  @ViewChild('wasteDialog', {static: true}) wasteDialog: ElementRef;
 
   data = [
     {
@@ -78,6 +80,14 @@ export class DetalleDepartamentosComponent implements OnInit {
 
   crear(){
     this.openDialog(this.dialog);
+  }
+
+  registrarTiempoOcioso(){
+    this.openDialog(this.timeDialog);
+  }
+
+  registrarDesperdicios(){
+    this.openDialog(this.wasteDialog);
   }
 
   openDialog(dialog) {
